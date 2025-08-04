@@ -1,0 +1,19 @@
+.footer {
+  background-color: #111827; /* สีเดียวกับพื้นหลังหลัก */
+  border-top: 1px solid #374151; /* เพิ่มเส้นขอบบางๆ ด้านบน */
+  margin-top: 5rem;
+  padding: 2rem 1.5rem; /* เพิ่ม padding ให้ดูโปร่งขึ้น */
+  text-align: center;
+}
+
+.copyright {
+  margin: 0;
+  color: #9ca3af; /* สีเทา */
+  font-size: 0.875rem;
+}
+
+.credit {
+  margin: 0.25rem 0 0 0; /* เพิ่มระยะห่างด้านบนเล็กน้อย */
+  color: #6b7280; /* ทำให้สีจางลงเล็กน้อย */
+  font-size: 0.875rem;
+}

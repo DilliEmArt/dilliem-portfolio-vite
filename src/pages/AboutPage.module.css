@@ -1,0 +1,118 @@
+.pageContainer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  max-width: 900px;
+}
+
+.headline {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #f8fafc;
+}
+
+.intro {
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: #d1d5db;
+  max-width: 750px;
+  margin: 0 auto 3rem auto;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 18rem;
+  background-color: rgba(168, 85, 247, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  color: #9ca3af;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .storyGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.storySection {
+  background-color: #1f2937;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+}
+
+.storyTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.storyText {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #d1d5db;
+}
+
+.missionSection {
+  text-align: center;
+  background-color: rgba(59, 130, 246, 0.1);
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.missionTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.missionText {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #d1d5db;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.ctaContainer {
+  text-align: center;
+}
+
+.ctaButton {
+  display: inline-block;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  font-size: 1.125rem;
+  padding: 0.8rem 2.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.ctaButton:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+.aboutImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem; /* ทำให้ขอบมนเหมือนเดิม */
+}

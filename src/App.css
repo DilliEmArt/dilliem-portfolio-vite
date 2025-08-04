@@ -1,0 +1,75 @@
+.hero {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.heroBanner {
+  width: 100%;
+  height: 24rem;
+  background-color: rgba(59, 130, 246, 0.2); /* dilli-blue/20 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  color: #9ca3af;
+}
+
+.heroTitle {
+  font-size: 2.75rem;
+  font-weight: 800;
+}
+
+.heroTitle span:nth-child(1) {
+  color: #a855f7; /* crystal-purple */
+}
+.heroTitle span:nth-child(2) {
+  color: #3b82f6; /* dilli-blue */
+}
+
+.heroSubtitle {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  color: #d1d5db;
+}
+
+.heroButtons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.buttonPrimary {
+  background-color: #3b82f6; /* dilli-blue */
+  color: white;
+}
+.buttonPrimary:hover {
+  background-color: #2563eb;
+}
+
+.buttonSecondary {
+  background-color: #a855f7; /* crystal-purple */
+  color: white;
+}
+.buttonSecondary:hover {
+  background-color: #9333ea;
+}
+
+.buttonOutline {
+  border: 1px solid #e5e7eb; /* crystal-platinum */
+  color: #e5e7eb;
+}
+.buttonOutline:hover {
+  background-color: rgba(229, 231, 235, 0.1);
+}

@@ -1,0 +1,43 @@
+.nav {
+  background-color: rgba(17, 24, 39, 0.5);
+  backdrop-filter: blur(4px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3b82f6; /* dilli-blue */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.brand:hover {
+  color: #f8fafc; /* dilli-white */
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.link {
+  color: #d1d5db; /* light-text */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: #3b82f6; /* dilli-blue */
+}

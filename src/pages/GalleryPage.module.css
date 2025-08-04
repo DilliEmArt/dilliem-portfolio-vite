@@ -1,0 +1,105 @@
+.pageContainer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* 1. Header */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.subtitle {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  margin-top: 0.5rem;
+}
+
+/* 2. Filter Tabs */
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+.filterButton {
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  border: 1px solid #374151;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: transparent;
+  color: #d1d5db;
+}
+.filterButton:hover {
+  background-color: #374151;
+}
+.activeFilter {
+  background-color: #e5e7eb;
+  color: #111827;
+  border-color: #e5e7eb;
+}
+
+/* 3. Grid Layout */
+.galleryGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.artworkItem {
+  aspect-ratio: 1 / 1; border-radius: 0.5rem; overflow: hidden;
+  position: relative; cursor: pointer; background-color: #1f2937;
+}
+.artworkImage { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.artworkItem:hover .artworkImage { transform: scale(1.1); }
+.artworkOverlay {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white; font-weight: 600; text-align: left;
+  opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
+}
+.artworkItem:hover .artworkOverlay { opacity: 1; transform: translateY(0); }
+
+/* 4. Load More */
+.loadMoreContainer { margin-top: 3rem; text-align: center; }
+.loadMoreButton {
+  background-color: #374151; color: #d1d5db; font-weight: 600;
+  padding: 0.75rem 2rem; border-radius: 0.5rem; border: none;
+  cursor: pointer; transition: background-color 0.2s;
+}
+.loadMoreButton:hover { background-color: #4b5563; }
+
+/* 5. Modal */
+.modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); display: flex; align-items: center; justify-content: center; z-index: 1000; animation: fadeIn 0.3s ease; }
+.modalContent { background-color: #1f2937; border-radius: 0.75rem; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; position: relative; animation: scaleUp 0.3s ease; }
+@media (min-width: 1024px) { .modalContent { flex-direction: row; max-width: 80vw; } }
+.closeButton { position: absolute; top: -1.5rem; right: -1.5rem; background-color: white; color: black; border: none; border-radius: 50%; width: 2.5rem; height: 2.5rem; font-size: 1.5rem; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; }
+.modalImageContainer { display: flex; align-items: center; justify-content: center; background-color: #111827; flex-shrink: 0; }
+.modalImage { max-height: 90vh; max-width: 60vw; object-fit: contain; }
+@media (max-width: 1023px) { .modalImage { max-width: 90vw; border-radius: 0.75rem 0.75rem 0 0; } }
+.modalDetails { padding: 2rem; display: flex; flex-direction: column; }
+.modalTitle { font-size: 1.75rem; font-weight: bold; margin: 0 0 0.5rem 0; }
+.metadata { display: flex; gap: 0.75rem; color: #9ca3af; margin-bottom: 1rem; }
+.tagContainer { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.tag { background-color: #374151; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; }
+.modalDescription { flex-grow: 1; color: #d1d5db; margin: 0 0 2rem 0; }
+.modalCtaButton { background-color: #3b82f6; color: white; font-weight: bold; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; text-align: center; transition: all 0.2s; }
+.modalCtaButton:hover { background-color: #2563eb; }
+
+/* 6. CTA Section */
+.ctaSection {
+  text-align: center; margin-top: 5rem;
+  padding-top: 3rem; border-top: 1px solid #374151;
+}
+.ctaTitle { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+.ctaButtons { display: flex; justify-content: center; gap: 1rem; }
+.ctaButton { padding: 0.75rem 2rem; border-radius: 9999px; font-weight: bold; text-decoration: none; transition: all 0.2s; }
+.primary { background-color: #3b82f6; color: white; }
+.primary:hover { background-color: #2563eb; }
+.secondary { background-color: transparent; color: #d1d5db; border: 1px solid #374151; }
+.secondary:hover { background-color: #374151; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleUp { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
