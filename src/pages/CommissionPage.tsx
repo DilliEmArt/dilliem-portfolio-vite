@@ -1,97 +1,88 @@
+import { useState } from 'react';
 import styles from './CommissionPage.module.css';
 import { NavLink } from 'react-router-dom';
-// 1. Import icons สำหรับ Workflow
+import { useTranslation } from 'react-i18next';
 import { FaPaperPlane, FaComments, FaCreditCard, FaEdit, FaPaintBrush, FaCheckCircle } from 'react-icons/fa';
 
 const CommissionPage = () => {
+  const { t } = useTranslation();
+  const [commissionStatus, setCommissionStatus] = useState<'open' | 'closed' | 'queue'>('closed');
+  const [queueCount, setQueueCount] = useState(3);
+
+  const StatusDisplay = () => {
+    if (commissionStatus === 'open') {
+      return <div className={`${styles.status} ${styles.statusOpen}`}>{t('commission_status_open')}</div>;
+    }
+    if (commissionStatus === 'closed') {
+      return <div className={`${styles.status} ${styles.statusClosed}`}>{t('commission_status_closed')}</div>;
+    }
+    if (commissionStatus === 'queue') {
+      return <div className={`${styles.status} ${styles.statusQueue}`}>{t('commission_status_queue', { count: queueCount })}</div>;
+    }
+    return null;
+  };
+
   return (
     <div className={`container ${styles.pageContainer}`}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Commission Info</h1>
-        <div className={`${styles.status} ${styles.statusOpen}`}>
-          STATUS: OPEN
-        </div>
+        <h1 className={styles.title}>{t('commission_title')}</h1>
+        <StatusDisplay />
       </div>
-      <p className={styles.intro}>
-        ยินดีต้อนรับสู่หน้า Commission ของ DilliEm ครับ! หากคุณสนใจว่าจ้างงานวาดภาพ ไม่ว่าจะเป็นภาพตัวละคร Original, Fanart, หรือโปรเจกต์ส่วนตัวต่างๆ โปรดอ่านรายละเอียดด้านล่างให้ครบถ้วนก่อนทำการติดต่อสั่งงาน ขอบคุณครับ
-      </p>
+      <p className={styles.intro}>{t('commission_intro')}</p>
 
       {/* --- ประเภทงาน --- */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>ประเภทงานและราคาเริ่มต้น</h2>
+        <h2 className={styles.sectionTitle}>{t('commission_section_types_title')}</h2>
         <div className={styles.cardGrid}>
-          {/* Card 1: Bust */}
           <div className={styles.card}>
-            <div className={styles.cardImagePlaceholder}>
-              {/* <img
-                src="https://res.cloudinary.com/your-name/image/upload/v12345/commission_bust_sample.jpg"
-                alt="Sample of Bust commission"
-                className={styles.cardImage}
-              /> */}
-              <p>ตัวอย่างงาน Bust</p></div>
+            <div className={styles.cardImagePlaceholder}><p>ตัวอย่างงาน Bust</p></div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Bust (ครึ่งตัวบน)</h3>
-              <p className={styles.cardPrice}>700 THB</p>
-              <p className={styles.cardDesc}>ลงสี แสงเงา + พื้นหลัง Gradient</p>
+              <h3 className={styles.cardTitle}>{t('commission_card_bust_title')}</h3>
+              <p className={styles.cardPrice}>{t('commission_card_bust_price')}</p>
+              <p className={styles.cardDesc}>{t('commission_card_bust_desc')}</p>
             </div>
           </div>
-          {/* Card 2: Half Body */}
+          {/* ... ทำซ้ำกับการ์ดอื่นๆ ... */}
           <div className={styles.card}>
             <div className={styles.cardImagePlaceholder}><p>ตัวอย่างงาน Half Body</p></div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Half Body</h3>
-              <p className={styles.cardPrice}>1,200 THB</p>
-              <p className={styles.cardDesc}>ลงสีเต็ม + พื้นหลัง Pattern</p>
+              <h3 className={styles.cardTitle}>{t('commission_card_half_title')}</h3>
+              <p className={styles.cardPrice}>{t('commission_card_half_price')}</p>
+              <p className={styles.cardDesc}>{t('commission_card_half_desc')}</p>
             </div>
           </div>
-          {/* Card 3: Full Body */}
           <div className={styles.card}>
             <div className={styles.cardImagePlaceholder}><p>ตัวอย่างงาน Full Body</p></div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Full Body</h3>
-              <p className={styles.cardPrice}>1,800 THB</p>
-              <p className={styles.cardDesc}>ท่าทางพิเศษ รายละเอียดชุดครบถ้วน</p>
+              <h3 className={styles.cardTitle}>{t('commission_card_full_title')}</h3>
+              <p className={styles.cardPrice}>{t('commission_card_full_price')}</p>
+              <p className={styles.cardDesc}>{t('commission_card_full_desc')}</p>
             </div>
           </div>
-          {/* Card 4: Chibi */}
           <div className={styles.card}>
             <div className={styles.cardImagePlaceholder}><p>ตัวอย่างงาน Chibi</p></div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Chibi</h3>
-              <p className={styles.cardPrice}>600 THB</p>
-              <p className={styles.cardDesc}>สไตล์น่ารัก เหมาะทำ Icon, Emote</p>
+              <h3 className={styles.cardTitle}>{t('commission_card_chibi_title')}</h3>
+              <p className={styles.cardPrice}>{t('commission_card_chibi_price')}</p>
+              <p className={styles.cardDesc}>{t('commission_card_chibi_desc')}</p>
             </div>
           </div>
         </div>
         <div className={styles.galleryLinkContainer}>
-            <NavLink to="/gallery" className={styles.galleryLink}>
-                ดูตัวอย่างผลงานทั้งหมดใน Gallery →
-            </NavLink>
+            <NavLink to="/gallery" className={styles.galleryLink}>{t('commission_gallery_link')}</NavLink>
         </div>
       </section>
 
       {/* --- ราคาเพิ่มเติม --- */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>ราคาเพิ่มเติมและเงื่อนไขพิเศษ</h2>
+        <h2 className={styles.sectionTitle}>{t('commission_section_addons_title')}</h2>
         <div className={styles.tableContainer}>
           <table className={styles.priceTable}>
             <tbody>
-              <tr>
-                <td>Extra Character (ตัวละครเพิ่มเติม)</td>
-                <td><strong>+70%</strong> ของราคาหลัก (ต่อ 1 ตัว)</td>
-              </tr>
-              <tr>
-                <td>Detailed Background (ฉากหลังมีรายละเอียด)</td>
-                <td>เริ่มต้น <strong>+500 THB</strong> (ประเมินตามบรีฟ)</td>
-              </tr>
-              <tr>
-                <td>Commercial Use (ใช้งานเชิงพาณิชย์)</td>
-                <td><strong>x2</strong> ของราคารวมทั้งหมด</td>
-              </tr>
-              <tr>
-                <td>⚡️ Rush Order (งานด่วน 3-5 วัน)</td>
-                <td><strong>+30%</strong> ของราคาหลัก (โปรดสอบถามคิวก่อน)</td>
-              </tr>
+              <tr><td>{t('commission_addon_extra_char')}</td><td><strong>{t('commission_addon_extra_char_price')}</strong></td></tr>
+              <tr><td>{t('commission_addon_detailed_bg')}</td><td><strong>{t('commission_addon_detailed_bg_price')}</strong></td></tr>
+              <tr><td>{t('commission_addon_commercial')}</td><td><strong>{t('commission_addon_commercial_price')}</strong></td></tr>
+              <tr><td>{t('commission_addon_rush')}</td><td><strong>{t('commission_addon_rush_price')}</strong></td></tr>
             </tbody>
           </table>
         </div>
@@ -99,63 +90,40 @@ const CommissionPage = () => {
 
       {/* --- ขั้นตอนการทำงาน --- */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>ขั้นตอนการทำงาน</h2>
+        <h2 className={styles.sectionTitle}>{t('commission_section_workflow_title')}</h2>
         <div className={styles.workflowGrid}>
-          <div className={styles.workflowStep}>
-            <FaPaperPlane className={styles.workflowIcon} />
-            <h3>Step 1: ส่งบรีฟ</h3>
-            <p>ลูกค้าส่งรายละเอียดและ Reference ผ่านฟอร์มสั่งงาน</p>
-          </div>
-          <div className={styles.workflowStep}>
-            <FaComments className={styles.workflowIcon} />
-            <h3>Step 2: คุยรายละเอียด</h3>
-            <p>พูดคุย, สรุปงาน และส่งใบเสนอราคาสุดท้าย</p>
-          </div>
-          <div className={styles.workflowStep}>
-            <FaCreditCard className={styles.workflowIcon} />
-            <h3>Step 3: ชำระมัดจำ</h3>
-            <p>ชำระเงินมัดจำ <strong>50%</strong> เพื่อยืนยันและเริ่มคิวงาน</p>
-          </div>
-          <div className={styles.workflowStep}>
-            <FaEdit className={styles.workflowIcon} />
-            <h3>Step 4: ร่างภาพและแก้ไข</h3>
-            <p>ส่งภาพร่างให้ตรวจสอบ (แก้ไขฟรี <strong>2 ครั้ง</strong>)</p>
-          </div>
-          <div className={styles.workflowStep}>
-            <FaPaintBrush className={styles.workflowIcon} />
-            <h3>Step 5: ลงสีและเก็บงาน</h3>
-            <p>หลังจากยืนยันภาพร่างแล้ว จะเริ่มลงสีเต็มรูปแบบ</p>
-          </div>
-          <div className={styles.workflowStep}>
-            <FaCheckCircle className={styles.workflowIcon} />
-            <h3>Step 6: ส่งมอบงาน</h3>
-            <p>ชำระเงินส่วนที่เหลือและรับไฟล์งานความละเอียดสูง</p>
-          </div>
+          <div className={styles.workflowStep}><FaPaperPlane className={styles.workflowIcon} /><h3>{t('commission_workflow_step1_title')}</h3><p>{t('commission_workflow_step1_desc')}</p></div>
+          <div className={styles.workflowStep}><FaComments className={styles.workflowIcon} /><h3>{t('commission_workflow_step2_title')}</h3><p>{t('commission_workflow_step2_desc')}</p></div>
+          <div className={styles.workflowStep}><FaCreditCard className={styles.workflowIcon} /><h3>{t('commission_workflow_step3_title')}</h3><p>{t('commission_workflow_step3_desc')}</p></div>
+          <div className={styles.workflowStep}><FaEdit className={styles.workflowIcon} /><h3>{t('commission_workflow_step4_title')}</h3><p>{t('commission_workflow_step4_desc')}</p></div>
+          <div className={styles.workflowStep}><FaPaintBrush className={styles.workflowIcon} /><h3>{t('commission_workflow_step5_title')}</h3><p>{t('commission_workflow_step5_desc')}</p></div>
+          <div className={styles.workflowStep}><FaCheckCircle className={styles.workflowIcon} /><h3>{t('commission_workflow_step6_title')}</h3><p>{t('commission_workflow_step6_desc')}</p></div>
         </div>
       </section>
       
       {/* --- FAQ --- */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>คำถามที่พบบ่อย (FAQ)</h2>
+        <h2 className={styles.sectionTitle}>{t('commission_section_faq_title')}</h2>
         <div className={styles.faqContainer}>
-            <details className={styles.faqItem}>
-                <summary>สามารถขอคืนเงินได้หรือไม่?</summary>
-                <p>สามารถขอคืนเงินเต็มจำนวนได้หากยังไม่มีการส่งภาพร่างใดๆ หลังจากเริ่มงานไปแล้ว จะไม่สามารถขอคืนเงินมัดจำได้ แต่สามารถยกเลิกงานได้ตลอดเวลาครับ</p>
-            </details>
-            <details className={styles.faqItem}>
-                <summary>รับ/ไม่รับวาดงานแนวไหนบ้าง?</summary>
-                <p>รับวาด OC, Fanart, ภาพประกอบทั่วไป ไม่รับวาดงานที่มีเนื้อหา NSFW, รุนแรง, หรือประเด็นอ่อนไหวทางการเมือง/ศาสนาครับ</p>
-            </details>
-            <details className={styles.faqItem}>
-                <summary>สามารถวาดตามสไตล์ของศิลปินท่านอื่นได้ไหม?</summary>
-                <p>ไม่สามารถลอกเลียนแบบสไตล์ของศิลปินท่านอื่นได้ 100% แต่สามารถใช้เป็นแรงบันดาลใจ (Inspiration) ในการบรีฟงานได้ครับ</p>
-            </details>
+            <details className={styles.faqItem}><summary>{t('commission_faq1_q')}</summary><p>{t('commission_faq1_a')}</p></details>
+            <details className={styles.faqItem}><summary>{t('commission_faq2_q')}</summary><p>{t('commission_faq2_a')}</p></details>
+            <details className={styles.faqItem}><summary>{t('commission_faq3_q')}</summary><p>{t('commission_faq3_a')}</p></details>
         </div>
       </section>
 
-       <div className={styles.ctaContainer}>
-         <a href="#" className={styles.ctaButton}>
-           Proceed to Order Form
+        <div className={styles.ctaContainer}>
+         <a
+           href={t('commission_form_link')}
+           target="_blank"
+           rel="noopener noreferrer"
+           className={`${styles.ctaButton} ${commissionStatus === 'closed' ? styles.disabledButton : ''}`}
+         >
+           {
+             commissionStatus === 'open' ? t('commission_cta_open') :
+             // ✅ แก้ไขบรรทัดนี้ให้ถูกต้อง
+             commissionStatus === 'closed' ? t('commission_cta_closed') : 
+             t('commission_cta_queue')
+           }
          </a>
        </div>
     </div>

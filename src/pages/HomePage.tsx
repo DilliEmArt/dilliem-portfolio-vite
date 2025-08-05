@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import styles from './HomePage.module.css';
 import { NavLink } from 'react-router-dom';
 
 const HomePage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={`container ${styles.heroSection}`}>
       
@@ -16,29 +19,23 @@ const HomePage = () => {
         <div className={styles.watermark}>DilliEm</div>
       </div>
 
-      {/* 2. ข้อความต้อนรับ */}
-      <h1 className={styles.headline}>
-        Where <span>Art</span> Meets <span>Imagination</span>
-      </h1>
-      <p className={styles.subheadline}>
-        Welcome to my creative space! I'm DilliEm, an artist who brings characters and stories to life. Explore the gallery, meet my OCs, and perhaps, let's create something magical together.
-      </p>
+      
+      <h1 className={styles.headline}>{t('home_headline')}</h1>
+      <p className={styles.subheadline}>{t('home_subheadline')}</p>
 
-      {/* 3. Call-to-Action Buttons */}
       <div className={styles.buttonContainer}>
         <NavLink to="/gallery" className={`${styles.button} ${styles.buttonPrimary}`}>
-          Explore Gallery
+          {t('home_button_gallery')}
         </NavLink>
         <NavLink to="/oc" className={`${styles.button} ${styles.buttonOutline}`}>
-          Meet the OCs
+          {t('home_button_ocs')}
         </NavLink>
       </div>
 
-      {/* 4. Crystal's Comment */}
-      <div className={styles.crystalComment}>
-        <p><strong>💎 Crystal says:</strong> "Took you long enough to get here. Don't just stand there, go click something. He spent ages on this, you know."</p>
-      </div>
-
+      <div 
+        className={styles.crystalComment}
+        dangerouslySetInnerHTML={{ __html: t('home_crystal_comment') }} 
+      />
     </div>
   );
 };

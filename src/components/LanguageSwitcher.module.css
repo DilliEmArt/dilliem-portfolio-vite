@@ -1,0 +1,24 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #374151;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+.switcher button {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+.switcher .active {
+  color: #111827;
+  background-color: #e5e7eb;
+}
+.switcher span {
+  color: #4b5563;
+}
